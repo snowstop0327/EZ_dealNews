@@ -1,0 +1,125 @@
+@mixin hover {
+  // TODO: re-enable along with mq4-hover-shim
+//  @if $enable-hover-media-query {
+//    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
+//    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+//    @media (hover: hover) {
+//      &:hover { @content }
+//    }
+//  }
+//  @else {
+// scss-lint:disable Indentation
+    &:hover { @content }
+}
+
+@mixin block {
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+}
+@mixin border-style($border-width, $border-color) {
+  border: ($border-width) solid ($border-color)
+}
+@mixin set-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin ellipsis-1 {
+  white-space: nowrap;
+  text-overflow:ellipsis; 
+  overflow: hidden;
+}
+
+@mixin unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin mul-box($lines-to-show) {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+@mixin hover-focus {
+  @if $enable-hover-media-query {
+    &:focus { @content }
+    @include hover { @content }
+  } @else {
+    &:focus,
+    &:hover {
+      @content
+    }
+  }
+}
+
+@mixin selected {
+  background: theme-color("info");
+  border: 1px solid theme-color('success');
+  .btn-compare {
+    color: theme-color('success');
+    i {
+      &:before {
+        content: "\68";
+      }
+    }
+  } 
+}
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+// @mixin mobile-base {
+//   @media screen and (max-width: $mobile-width) {
+//     @content
+//   }
+// }
+
+@mixin mobile {
+  @media screen and (min-width: 0px) and (max-width: $tablet-width - 1px) {
+    @content
+  }
+}
+@mixin middle-device {
+  @media screen and (min-width: $mobile-width + 1px) {
+    @content
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-width), print {
+    @content
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-width) {
+    @content
+  }
+}
+
+@mixin widescreen {
+  @media screen and (min-width: $widescreen-width) {
+    @content
+  }
+}
+
+@mixin fullhd {
+  @media screen and (min-width: $fullhd-width) {
+    @content
+  }
+}
+

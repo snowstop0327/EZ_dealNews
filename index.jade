@@ -1,0 +1,25 @@
+doctype html
+|
+|
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+|
+|
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+|
+|
+<!--[if !IE]><!-->
+html(lang="zh-TW")
+	include ./includes/head.jade
+
+body
+	//- 裝入頭部
+	include ./includes/header.html
+	//- 裝入內容
+	//- include ./includes/body-index.jade
+	include ./includes/index.content.html
+	//- .section
+		
+	//- 裝入底部
+	include ./includes/footer.html
+	//- script(type="text/javascript" src="/asset/javascripts/main-dist.js")
+	//- script(type="text/javascript") $("#sticky-box").stick_in_parent();
